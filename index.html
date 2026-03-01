@@ -205,10 +205,6 @@
             overflow: hidden;
             transition: max-height 0.6s ease;
         }
-
-        .letter.expanded .letter-content {
-            max-height: 1000vh; /* Se adapta a cualquier tamaño */
-        }
         
         /* Music Tab */
         .song {
@@ -572,8 +568,18 @@
             
             // Expandable love letter
             const loveLetter = document.getElementById('loveLetter');
+            const letterContent = loveLetter.querySelector('.letter-content');
+
             loveLetter.addEventListener('click', function() {
-                this.classList.toggle('expanded');
+
+                if (letterContent.style.height && letterContent.style.height !== "0px") {
+                    // Cerrar
+                    letterContent.style.height = "0px";
+                } else {
+                    // Abrir dinámicamente según el contenido real
+                    letterContent.style.height = letterContent.scrollHeight + "px";
+                }
+
             });
             
             // Add floating decorative elements
