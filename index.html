@@ -570,17 +570,17 @@
             const loveLetter = document.getElementById('loveLetter');
             const letterContent = loveLetter.querySelector('.letter-content');
 
-            loveLetter.addEventListener('click', function () {
+            loveLetter.addEventListener('click', function() {
 
-                if (letterContent.style.maxHeight) {
+                if (letterContent.style.height && letterContent.style.height !== "0px") {
                     // Cerrar
-                    letterContent.style.maxHeight = null;
+                    letterContent.style.height = "0px";
                 } else {
-                    // Abrir con altura dinámica
-                    letterContent.style.maxHeight = letterContent.scrollHeight + "px";
+                    // Abrir dinámicamente según el contenido real
+                    letterContent.style.height = letterContent.scrollHeight + "px";
                 }
 
-            }); 
+            });
             
             // Add floating decorative elements
             function addFloatingElements() {
